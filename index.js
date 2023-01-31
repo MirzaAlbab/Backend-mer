@@ -16,9 +16,8 @@ async function main() {
   try {
     // Connect to the MongoDB cluster
     await client.connect();
-
+    console.log("database connect");
     // Make the appropriate DB calls
-    await listDatabases(client);
   } catch (e) {
     console.error(e);
   } finally {
@@ -27,7 +26,6 @@ async function main() {
 }
 
 main().catch(console.error);
-db.once("open", () => console.log("Database Connected..."));
 
 app.use(cors());
 app.use(express.json());
