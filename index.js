@@ -1,31 +1,16 @@
 import express from "express";
-import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 import cors from "cors";
 import UserRoute from "./routes/UserRoute.js";
 import {} from "dotenv/config";
 const app = express();
-async function main() {
-  /**
-   * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-   * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-   */
-  const uri = process.env.db;
-
-  const client = new MongoClient(uri);
-
-  try {
-    // Connect to the MongoDB cluster
-    await client.connect();
-    console.log("database connect");
-    // Make the appropriate DB calls
-  } catch (e) {
-    console.error(e);
-  } finally {
-    await client.close();
-  }
-}
-
-main().catch(console.error);
+mongoose.connect(process.env.db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on("error", (error) => console.log(error));
+db.once("open", () => console.log("Database Connected..."));
 
 app.use(cors());
 app.use(express.json());
