@@ -1,0 +1,30 @@
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/users/63d32c2d33655ab1fc4a6f7d
+###
+POST http://127.0.0.1:5000/users
+Content-Type: application/json
+
+{
+  "name":"del",
+  "email":"del@gmail.com",
+  "gender":"male"
+
+}
+
+
+###
+PATCH http://localhost:5000/users/63d32c2d33655ab1fc4a6f7d
+Content-Type: application/json
+
+{
+  "name":"Depdate",
+  "email":"deupdate@gmail.com",
+  "gender":"male"
+
+}
+
+
+###
+DELETE http://localhost:5000/users/63d32c2d33655ab1fc4a6f7d
