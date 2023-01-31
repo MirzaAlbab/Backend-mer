@@ -9,7 +9,7 @@ async function main() {
    * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
    * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
    */
-  const uri = db;
+  const uri = process.env.db;
 
   const client = new MongoClient(uri);
 
