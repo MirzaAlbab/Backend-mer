@@ -1,5 +1,5 @@
 import express from "express";
-import mongoose from "mongoose";
+import { MongoClient } from "mongodb";
 import cors from "cors";
 import UserRoute from "./routes/UserRoute.js";
 import {} from "dotenv/config";
